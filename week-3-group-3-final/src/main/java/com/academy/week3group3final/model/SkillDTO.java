@@ -1,27 +1,36 @@
 package com.academy.week3group3final.model;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.persistence.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Entity
-@EntityListeners(AuditingEntityListener.class)
-public class Skill extends AuditModel {
+public class SkillDTO extends AuditModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Date createdAt;
+    private Date updatedAt;
     private Long id;
-
     private String description;
     private int duration;
     private Date lastUsed;
+    private Long employee_id;
 
-    @ManyToOne
-    private Employee employee;
 
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
     public Long getId() {
         return id;
@@ -57,12 +66,12 @@ public class Skill extends AuditModel {
         this.lastUsed = DATE_FORMAT.parse(lastUsed);
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public Long getEmployee_id() {
+        return employee_id;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployee_id(Long employeeId) {
+        this.employee_id = employeeId;
     }
 
 }
